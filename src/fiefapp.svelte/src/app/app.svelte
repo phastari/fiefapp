@@ -2,15 +2,16 @@
   import FiefManager from './fief-manager/fief-manager.svelte';
   import { buildingAlternatives } from '../stores/building-alternatives';
   import { postData } from '../api/api';
+  import { onMount } from 'svelte';
 
-  async () => {
+  onMount(async () => {
     postData({
       query:
         '{ buildingAlternatives { type upkeep stonework woodwork smithswork stone wood iron } }',
     })
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
-  };
+  });
 </script>
 
 <style>

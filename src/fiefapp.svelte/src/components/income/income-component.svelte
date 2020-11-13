@@ -1,9 +1,9 @@
 <script lang="ts">
   export let name: string;
-  export let base: number | undefined;
-  export let silver: number | undefined;
-  export let stone: number | undefined;
-  export let wood: number | undefined;
+  export let base: number | undefined = undefined;
+  export let silver: number | undefined = undefined;
+  export let stone: number | undefined = undefined;
+  export let wood: number | undefined = undefined;
 </script>
 
 <style>
