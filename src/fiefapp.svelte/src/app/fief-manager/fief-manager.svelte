@@ -3,6 +3,42 @@
   import Information from './information/information.svelte';
   import Stewards from './stewards/stewards.svelte';
   import Subsidiaries from './subsidiaries/subsidiaries.svelte';
+  import { postData } from '../../api/api';
+  import { onMount } from 'svelte';
+  import { buildingAlternatives } from '../../stores/building-alternatives';
+  import { BuildingAlternative } from '../../models/settings/building-alternative';
+
+  onMount(async () => {
+    postData({
+      query:
+        '{ buildingAlternatives { type upkeep stonework woodwork smithswork stone wood iron } }',
+    })
+    .then((res) => res.json())
+    .then((res) => {
+      try {
+        let array: BuildingAlternative[] = [];
+        if (res.data.buildingAlternatives.length > 0) {
+          for(let i = 0; i < res.data.buildingAlternatives.length; i++) {
+            array.push(
+              new BuildingAlternative(
+                res.data.buildingAlternatives[i].type, 
+                res.data.buildingAlternatives[i].upkeep, 
+                res.data.buildingAlternatives[i].woodwork, 
+                res.data.buildingAlternatives[i].stonework, 
+                res.data.buildingAlternatives[i].smithswork, 
+                res.data.buildingAlternatives[i].wood, 
+                res.data.buildingAlternatives[i].stone, 
+                res.data.buildingAlternatives[i].iron))
+          }
+
+          buildingAlternatives.set(array);
+        }
+      } catch(error) {
+        throw new Error();
+      }
+    })
+    .catch((error) => console.log(error));
+  });
 
   const openTab = (event: MouseEvent, tab: string) => {
     if (event !== null && (tab !== null || tab !== '')) {

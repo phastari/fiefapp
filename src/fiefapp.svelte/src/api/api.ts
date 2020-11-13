@@ -9,5 +9,5 @@ export const postData = async (query: object): Promise<Response> => {
     body: JSON.stringify(query),
   });
 
-  return response.json();
+  return response;
 };
