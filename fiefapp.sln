@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.entities", "src\fiefapp.entities\fiefapp.entities.csproj", "{240FD42C-92A1-40A3-ACD6-0701C54FF0E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.mongodb", "src\fiefapp.mongodb\fiefapp.mongodb.csproj", "{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4} = {240FD42C-92A1-40A3-ACD6-0701C54FF0E4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiefapp.graphql", "src\fiefapp.graphql\fiefapp.graphql.csproj", "{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiefapp.api", "src\fiefapp.api\fiefapp.api.csproj", "{17FBEFD1-6945-49DC-B9EB-2C0A98486058}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8} = {8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4} = {240FD42C-92A1-40A3-ACD6-0701C54FF0E4}
+		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9} = {070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79631A72-FF7C-4BB8-9FB3-0FD053052FFE}
+	EndGlobalSection
+EndGlobal
