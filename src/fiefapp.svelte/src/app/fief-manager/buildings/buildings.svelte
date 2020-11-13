@@ -1,6 +1,6 @@
 <script lang="ts">
-  import BuildingComponent from 'src/components/building/building-component.svelte';
-  import type { Building } from 'src/models/building';
+  import BuildingComponent from '../../../components/building/building-component.svelte';
+  import type { Building } from '../../../models/building';
   import { fiefs, index } from '../../../stores/fiefs';
 
   let buildings: Building[];
