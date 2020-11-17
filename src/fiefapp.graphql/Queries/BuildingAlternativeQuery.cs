@@ -2,14 +2,12 @@
 using fiefapp.mongodb.Repositories.BuildingAlternative;
 using GraphQL.Types;
 
-namespace fiefapp.graphql
+namespace fiefapp.graphql.Queries
 {
-    public class RootQuery : ObjectGraphType
+    public class BuildingAlternativeQuery : ObjectGraphType
     {
-        public RootQuery(IBuildingAlternativeRepository repository)
+        public BuildingAlternativeQuery(IBuildingAlternativeRepository repository)
         {
-            Name = "Query";
-
             Field<ListGraphType<BuildingAlternativeType>>("buildingAlternatives", resolve: context =>
             {
                 return repository.Get();

@@ -3,11 +3,11 @@ using fiefapp.graphql.Types;
 using GraphQL;
 using GraphQL.Types;
 
-namespace fiefapp.graphql
+namespace fiefapp.graphql.Mutations
 {
-    public class RootMutation : ObjectGraphType<object>
+    public class BuildingAlternativeMutation : ObjectGraphType<object>
     {
-        public RootMutation(IBuildingAlternativeSubscriptionService subscriptionService)
+        public BuildingAlternativeMutation(IBuildingAlternativeSubscriptionService subscriptionService)
         {
             Field<BuildingAlternativeType>(
                 "addBuildingAlternative",

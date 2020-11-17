@@ -16,8 +16,8 @@ namespace fiefapp.graphql
 
             services.AddSingleton<IBuildingAlternativeSubscriptionService, BuildingAlternativeSubscriptionService>();
 
-            services.AddSingleton<RootQuery>();
-            services.AddSingleton<RootMutation>();
+            services.AddSingleton<RootQueries>();
+            services.AddSingleton<RootMutations>();
             services.AddSingleton<RootSubscription>();
             services.AddSingleton<RootSchema>();
 
