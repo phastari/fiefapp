@@ -5,7 +5,7 @@ interface ILivingconditionAlternative {
   baseCost: number;
   luxuryCost: number;
   focusGain: number;
-  wellbeing: number;
+  wellbeingGain: number;
   description: string;
 }
 
@@ -15,7 +15,7 @@ export class LivingconditionAlternative implements ILivingconditionAlternative {
     public baseCost: number,
     public luxuryCost: number,
     public focusGain: number,
-    public wellbeing: number,
+    public wellbeingGain: number,
     public description: string
   ) {}
 
@@ -25,7 +25,7 @@ export class LivingconditionAlternative implements ILivingconditionAlternative {
       this.baseCost,
       this.luxuryCost,
       this.focusGain,
-      this.wellbeing,
+      this.wellbeingGain,
       this.description
     );
   }

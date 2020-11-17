@@ -1,0 +1,214 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  font-size: max(1.3vw, 12px);
+  --line-height: 1.4vw;
+  --small-field: 3.9vw;
+  --small-min: 45px;
+  --small-max: 60px;
+  --medium-field: 7vw;
+  --medium-min: 65px;
+  --medium-max: 100px;
+  --large-field: 10.4vw;
+  --large-min: 120px;
+  --large-max: 200px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  line-height: var(--line-height);
+  margin-bottom: 3px;
+}
+
+.full-width-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3px;
+  line-height: var(--line-height);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  margin-right: 18px;
+}
+
+input,
+span,
+select,
+textarea {
+  font: inherit;
+  font-size: inherit;
+  align-self: center;
+}
+
+h2 {
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+span {
+  padding-right: 6px;
+}
+
+.small-field {
+  width: var(--small-field);
+  min-width: var(--small-min);
+  max-width: var(--small-max);
+  text-align: center;
+}
+
+.medium-field {
+  width: var(--medium-field);
+  min-width: var(--medium-min);
+  max-width: var(--medium-max);
+  text-align: right;
+}
+
+.large-field {
+  width: var(--large-field);
+  min-width: var(--large-min);
+  max-width: var(--large-max);
+  text-align: right;
+}
+
+.full-width-field {
+  width: 100%;
+  text-align: left;
+}

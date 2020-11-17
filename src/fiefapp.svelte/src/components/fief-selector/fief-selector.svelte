@@ -15,7 +15,7 @@
 </style>
 
 <!-- svelte-ignore a11y-no-onchange -->
-<select bind:value={selected} on:change={() => changeSelection()}>
+<select class="large-field" bind:value={selected} on:change={() => changeSelection()}>
   {#each $fiefs as fief}
     <option value={fief}>{fief.name}</option>
   {/each}

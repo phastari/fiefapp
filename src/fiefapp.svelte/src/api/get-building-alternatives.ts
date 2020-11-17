@@ -7,8 +7,21 @@ export const getBuildingAlternatives = async (): Promise<
   let array: BuildingAlternative[] = [];
 
   queryDataAsync({
-    query:
-      '{ buildingAlternatives { type upkeep stonework woodwork smithswork stone wood iron } }',
+    query: `
+    {
+      buildingAlternatives
+      {
+        type
+        upkeep
+        stonework
+        woodwork
+        smithswork
+        stone
+        wood
+        iron
+      }
+    }
+    `,
   })
     .then((res) => res.json())
     .then((res) => {

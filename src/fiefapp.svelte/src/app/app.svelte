@@ -3,7 +3,7 @@
 </script>
 
 <style>
-  :global(*) {
+  /* :global(*) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,7 +22,7 @@
   :global(.row) {
     display: flex;
     flex-direction: row;
-  }
+  } */
 </style>
 
 <div class="app">
