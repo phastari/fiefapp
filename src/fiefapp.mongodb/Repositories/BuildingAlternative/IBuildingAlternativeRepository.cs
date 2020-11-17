@@ -10,5 +10,7 @@ namespace fiefapp.mongodb.Repositories.BuildingAlternative
         void Update(string id, entities.BuildingAlternative alternativeIn);
         void Remove(entities.BuildingAlternative alternativeIn);
         void Remove(string id);
+
+        entities.BuildingAlternative AddBuildingAlternative(entities.BuildingAlternative alternative);
     }
 }

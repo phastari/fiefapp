@@ -1,8 +1,7 @@
-﻿using fiefapp.graphql.Types;
+﻿using fiefapp.graphql.Services.BuildingAlternative;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
-using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,9 +13,13 @@ namespace fiefapp.graphql
         {
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
-            services.AddSingleton<BuildingAlternativeType>();
+
+            services.AddSingleton<IBuildingAlternativeSubscriptionService, BuildingAlternativeSubscriptionService>();
+
             services.AddSingleton<RootQuery>();
-            services.AddSingleton<ISchema, RootSchema>();
+            services.AddSingleton<RootMutation>();
+            services.AddSingleton<RootSubscription>();
+            services.AddSingleton<RootSchema>();
 
             services.AddGraphQL(options =>
             {
@@ -24,14 +27,19 @@ namespace fiefapp.graphql
             })
             .AddErrorInfoProvider(options => options.ExposeExceptionStackTrace = true)
             .AddSystemTextJson()
-            .AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User });
+            .AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User })
+            .AddWebSockets()
+            .AddDataLoader()
+            .AddGraphTypes(typeof(RootSchema));
 
             return services;
         }
 
         public static IApplicationBuilder DI_UseGraphQL(this IApplicationBuilder application)
         {
-            application.UseGraphQL<ISchema>();
+            application.UseWebSockets();
+            application.UseGraphQLWebSockets<RootSchema>();
+            application.UseGraphQL<RootSchema>();
             application.UseGraphQLPlayground();
 
             return application;
