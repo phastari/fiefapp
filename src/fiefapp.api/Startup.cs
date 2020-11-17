@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 
 namespace fiefapp.api
 {
@@ -31,18 +30,10 @@ namespace fiefapp.api
                 });
             });
 
-            // Should try to move this to fiefapp.mongodb
-            services.Configure<DatabaseSettings>(
-                Configuration.GetSection(nameof(DatabaseSettings)));
-
-            services.AddSingleton<IDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
-            //---
-
             services.AddHttpContextAccessor();
 
             services.DI_GraphQL();
-            services.DI_MongoDB();
+            services.DI_MongoDB(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

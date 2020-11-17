@@ -9,8 +9,8 @@ namespace fiefapp.graphql
         public RootSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<RootQuery>();
-
-            Description = "Fiefapp schema";
+            Mutation = serviceProvider.GetRequiredService<RootMutation>();
+            Subscription = serviceProvider.GetRequiredService<RootSubscription>();
         }
     }
 }

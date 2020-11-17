@@ -37,5 +37,11 @@ namespace fiefapp.mongodb.Repositories.BuildingAlternative
 
         public void Remove(string id) =>
             _buildingAlternatives.DeleteOne(alternative => alternative.Id == id);
+
+        public entities.BuildingAlternative AddBuildingAlternative(entities.BuildingAlternative alternative)
+        {
+            _buildingAlternatives.InsertOne(alternative);
+            return alternative;
+        }
     }
 }

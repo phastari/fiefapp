@@ -7,6 +7,9 @@ namespace fiefapp.graphql.Types
     {
         public BuildingAlternativeType()
         {
+            Name = "BuildingAlternative";
+
+            Field(_ => _.Id);
             Field(_ => _.Type).Description("The name of the type of building.");
             Field(_ => _.Upkeep).Description("Base cost each year to maintain the building.");
             Field(_ => _.Stonework).Description("The amount of days a mason has to work on the building for it to be completed.");
