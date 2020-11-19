@@ -1,15 +1,15 @@
-import { InheritanceAlternative } from './inheritance-alternative';
-import { RoadAlternative } from './road-alternative';
-import { LivingconditionAlternative } from './livingcondition-alternative';
+import type { Inheritance } from '../inheritance';
+import type { Livingcondition } from '../livingcondition';
+import type { Road } from '../road';
 
 export interface ISelectionAlternatives {
-  roads: RoadAlternative[];
-  inheritances: InheritanceAlternative[];
-  livingConditions: LivingconditionAlternative[];
+  roads: Road[];
+  inheritances: Inheritance[];
+  livingconditions: Livingcondition[];
 }
 
 export const initialSelectionAlternatives: ISelectionAlternatives = {
   roads: [],
   inheritances: [],
-  livingConditions: [],
+  livingconditions: [],
 };

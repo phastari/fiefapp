@@ -1,9 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace fiefapp.entities
 {
-    public class InheritanceAlternative
+    public class Inheritance
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -11,5 +12,6 @@ namespace fiefapp.entities
         public string Type { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public List<string> IncludedInGamesessions { get; set; }
     }
 }

@@ -5,16 +5,17 @@
   import Subsidiaries from './subsidiaries/subsidiaries.svelte';
   import { onMount } from 'svelte';
   import { buildingAlternatives } from '../../stores/building-alternatives';
-  import type { BuildingAlternative } from '../../models/settings/building-alternative';
   import { getBuildingAlternatives } from '../../api/get-building-alternatives';
   import Buildings from './buildings/buildings.svelte';
   import { getSelectionAlternatives } from '../../api/get-selection-alternatives';
-  import type { ISelectionAlternatives } from '../../models/settings/selection-alternatives';
   import { selectionAlternatives } from '../../stores/selection-alternatives';
 
   onMount(async () => {
-    getBuildingAlternatives().then((res: BuildingAlternative[]) => buildingAlternatives.set(res));
-    getSelectionAlternatives().then((res: ISelectionAlternatives) => selectionAlternatives.set(res));
+    const buildings = await getBuildingAlternatives();
+    buildingAlternatives.set(buildings);
+
+    const alternatives = await getSelectionAlternatives();
+    selectionAlternatives.set(alternatives);
   });
 
   const openTab = (event: MouseEvent, tab: string) => {

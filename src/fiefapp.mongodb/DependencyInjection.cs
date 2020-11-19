@@ -1,4 +1,5 @@
 ﻿using fiefapp.mongodb.Repositories.BuildingAlternative;
+using fiefapp.mongodb.Repositories.SelectionAlternatives;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +15,7 @@ namespace fiefapp.mongodb
             services.AddSingleton<IDatabaseSettings>(settings);
 
             services.AddTransient<IBuildingAlternativeRepository, BuildingAlternativeRepository>();
+            services.AddTransient<ISelectionAlternativesRepository, SelectionAlternativesRepository>();
 
             return services;
         }

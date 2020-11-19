@@ -9,6 +9,7 @@ namespace fiefapp.graphql
         public RootQueries(IBuildingAlternativeRepository repository)
         {
             Field<BuildingAlternativeQuery>("buildingAlternative", resolve: context => new { });
+            Field<SelectionAlternativesQuery>("selectionAlternatives", resolve: context => new { });
         }
     }
 }

@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { Market } from './market';
-import { Livingcondition, livingconditions } from './livingcondition';
+import { emptyLivingcondition, Livingcondition } from './livingcondition';
 import type { Port } from './port';
-import { Road, roads } from './road';
-import { Inheritance, inheritances } from './inheritance';
+import { emptyRoad, Road } from './road';
+import { emptyInheritance, Inheritance } from './inheritance';
 import { Village } from './village';
 import type { Building } from './building';
 import type { Boat } from './boat';
@@ -137,9 +137,9 @@ export class Fief implements IFief {
     this.market = new Market();
     this.stewardId = undefined;
     this.port = undefined;
-    this.livingcondition = livingconditions[2];
-    this.road = roads[1];
-    this.inheritance = inheritances[0];
+    this.livingcondition = emptyLivingcondition;
+    this.road = emptyRoad;
+    this.inheritance = emptyInheritance;
     this.villages = [new Village()];
     this.industries = getDefaultIndustries(this.fiefId, this.market.marketId);
     this.buildings = [];

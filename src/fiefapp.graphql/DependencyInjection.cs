@@ -1,4 +1,5 @@
 ﻿using fiefapp.graphql.Services.BuildingAlternative;
+using fiefapp.graphql.Types;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;

@@ -2,6 +2,7 @@
   import FiefSelector from '../../../components/fief-selector/fief-selector.svelte';
   import { fiefs, index } from '../../../stores/fiefs';
   import type { Fief } from '../../../models/fief';
+  import { selectionAlternatives } from '../../../stores/selection-alternatives';
 
   let fief: Fief;
   $: fief = $fiefs[$index];
@@ -28,7 +29,9 @@
     <div class="row">
       <span>Arvstyp</span>
       <select class="large-field" bind:value={fief.inheritance} >
-        <option />
+        {#each $selectionAlternatives.inheritances as inheritance}
+          <option>{inheritance.name}</option>
+        {/each}
       </select>
     </div>
     <div class="full-width-row">
@@ -37,7 +40,9 @@
     <div class="row">
       <span>Vägnät</span> 
       <select class="large-field" bind:value={fief.road} >
-        <option />
+        {#each $selectionAlternatives.roads as road}
+          <option>{road.name}</option>
+        {/each}
       </select>
     </div>
     <div class="row">

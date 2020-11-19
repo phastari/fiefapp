@@ -1,12 +1,10 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface ILivingcondition {
-  livingconditionId: string;
   type: LivingconditionType;
+  name: string;
   baseCost: number;
   luxuryCost: number;
   focusGain: number;
-  wellbeing: number;
+  wellbeingGain: number;
   description: string;
 }
 
@@ -19,36 +17,23 @@ export enum LivingconditionType {
 }
 
 export class Livingcondition implements ILivingcondition {
-  readonly livingconditionId: string;
-  type: LivingconditionType;
-  baseCost: number;
-  luxuryCost: number;
-  focusGain: number;
-  wellbeing: number;
-  description: string;
-
   constructor(
-    type: LivingconditionType,
-    baseCost: number,
-    luxuryCost: number,
-    focusGain: number,
-    wellbeing: number,
-    description: string
-  ) {
-    this.livingconditionId = uuidv4();
-    this.type = type;
-    this.baseCost = baseCost;
-    this.luxuryCost = luxuryCost;
-    this.focusGain = focusGain;
-    this.wellbeing = wellbeing;
-    this.description = description;
-  }
+    public type: LivingconditionType,
+    public name: string,
+    public baseCost: number,
+    public luxuryCost: number,
+    public focusGain: number,
+    public wellbeingGain: number,
+    public description: string
+  ) {}
 }
 
-export const livingconditions: Livingcondition[] = [
-  new Livingcondition(LivingconditionType.BARE, 1, 0, -4, -2, 'Nödtorftig'),
-  new Livingcondition(LivingconditionType.MEAGRE, 2, 0, -2, -1, 'Gemen'),
-  new Livingcondition(LivingconditionType.GOOD, 3, 2, 2, 1, 'God'),
-  new Livingcondition(LivingconditionType.PLENTIFUL, 4, 4, 6, 2, 'Mycket god'),
-  new Livingcondition(LivingconditionType.LUXURY, 6, 8, 10, 3, 'Lyxliv'),
-];
+export const emptyLivingcondition: Livingcondition = {
+  type: LivingconditionType.GOOD,
+  name: '',
+  baseCost: 0,
+  luxuryCost: 0,
+  focusGain: 0,
+  wellbeingGain: 0,
+  description: '',
+};
