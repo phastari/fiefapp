@@ -16,12 +16,15 @@ namespace fiefapp.mongodb.Repositories.BuildingAlternative
         }
 
         public List<entities.BuildingAlternative> Get() =>
-            _buildingAlternatives.Find(alternative => true)
-                                 .ToList();
+            _buildingAlternatives.Find(
+                alternative => alternative.IncludedInGamesessions.Contains("default"))
+                                                                 .ToList();
 
-        public entities.BuildingAlternative Get(string id) =>
-            _buildingAlternatives.Find(alternative => alternative.Id == id)
-                                 .FirstOrDefault();
+        public List<entities.BuildingAlternative> Get(string id) =>
+            _buildingAlternatives.Find(
+                alternative => alternative.IncludedInGamesessions.Contains("default") 
+                || alternative.IncludedInGamesessions.Contains(id))
+                                                     .ToList();
 
         public entities.BuildingAlternative Create(entities.BuildingAlternative alternative)
         {

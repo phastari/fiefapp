@@ -1,16 +1,15 @@
-import { queryDataAsync } from './api';
+import { client } from './apollo';
+import gql from 'graphql-tag';
 import type { BuildingAlternative } from '../models/settings/building-alternative';
+import type { DocumentNode } from 'graphql';
 
 export const getBuildingAlternatives = async (): Promise<
   BuildingAlternative[]
 > => {
-  return queryDataAsync({
-    query: `
-    {
-      buildingAlternative 
-      {
-        buildingAlternatives
-        {
+  const query = gql`
+    query {
+      buildingAlternative {
+        buildingAlternatives {
           type
           upkeep
           stonework
@@ -22,22 +21,28 @@ export const getBuildingAlternatives = async (): Promise<
         }
       }
     }
-    `,
-  })
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
+  `;
 
-      const {
-        data: {
-          buildingAlternative: { buildingAlternatives },
-        },
-      } = await response.json();
+  const { data, errors } = await client.query({ query });
 
-      return buildingAlternatives as BuildingAlternative[];
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+  if (errors !== undefined) {
+    throw new Error();
+  }
+
+  return data.buildingAlternative.buildingAlternatives;
 };
+
+export const buildingAlternativesSubscription: DocumentNode = gql`
+  subscription {
+    buildingAlternativeAdded {
+      type
+      upkeep
+      stonework
+      woodwork
+      smithswork
+      stone
+      wood
+      iron
+    }
+  }
+`;

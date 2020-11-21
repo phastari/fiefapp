@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace fiefapp.entities
@@ -16,5 +17,6 @@ namespace fiefapp.entities
         public int Stone { get; set; }
         public int Wood { get; set; }
         public int Iron { get; set; }
+        public List<string> IncludedInGamesessions { get; set; }
     }
 }

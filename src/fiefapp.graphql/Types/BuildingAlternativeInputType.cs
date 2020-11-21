@@ -1,5 +1,4 @@
-﻿using fiefapp.entities;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 
 namespace fiefapp.graphql.Types
 {

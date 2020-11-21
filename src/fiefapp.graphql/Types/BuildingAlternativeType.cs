@@ -18,6 +18,7 @@ namespace fiefapp.graphql.Types
             Field(_ => _.Stone).Description("The amount of stone required to complete the building.");
             Field(_ => _.Wood).Description("The amount of wood required to complete the building.");
             Field(_ => _.Iron).Description("The amount of iron required to complete the building.");
+            Field(_ => _.IncludedInGamesessions);
         }
     }
 }
