@@ -1,6 +1,6 @@
 <script lang="ts">
   import BuildingSubsidiaryComponent from './components/building-subsidiary-component.svelte';
-  import SubsidiaryComponent from './components/subsidiary-component.svelte
+  import SubsidiaryComponent from './components/subsidiary-component.svelte';
   import { Subsidiary } from '../../../models/industries/subsidiary';
   import { fiefs, index } from '../../../stores/fiefs';
 
