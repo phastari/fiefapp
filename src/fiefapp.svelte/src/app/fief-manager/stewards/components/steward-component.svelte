@@ -1,5 +1,5 @@
 <script>
-  import T6Textbox from '../t6-textbox/t6-textbox.svelte';
+  import T6Textbox from '../../../../components/t6-textbox/t6-textbox.svelte';
 
   export let name: string;
   export let age: number;

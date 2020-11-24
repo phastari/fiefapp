@@ -1,5 +1,5 @@
 <script lang="ts">
-  import IncomeComponent from '../../../components/income/income-component.svelte';
+  import IncomeComponent from './components/income-component.svelte';
   import { Income } from '../../../models/industries/income';
   import { Tax } from '../../../models/industries/tax';
   import type { Industry } from '../../../models/industries/industry';

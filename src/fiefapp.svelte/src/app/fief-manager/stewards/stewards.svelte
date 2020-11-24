@@ -1,5 +1,5 @@
 <script lang="ts">
-  import StewardComponent from '../../../components/steward/steward-component.svelte';
+  import StewardComponent from './components/steward-component.svelte';
   import { Steward } from '../../../models/steward';
   import { stewards } from '../../../stores/stewards';
 
