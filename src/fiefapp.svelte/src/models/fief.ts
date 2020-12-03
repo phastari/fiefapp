@@ -17,6 +17,8 @@ import { getDefaultIndustries } from '../static/default-industries';
 
 interface IFief {
   fiefId: string;
+  gamesessionId: string;
+  playerId: string | undefined;
   name: string;
   manorName: string;
   acres: number;
@@ -67,6 +69,7 @@ export interface IShortFief {
 
 export class Fief implements IFief {
   readonly fiefId: string;
+  playerId: string | undefined;
   name: string;
   manorName: string;
   acres: number;
@@ -105,13 +108,14 @@ export class Fief implements IFief {
   employees: Employee[];
   builders: Builder[];
 
-  constructor(name: string = '') {
+  constructor(
+    public readonly gamesessionId: string,
+    name?: string,
+    playerId?: string
+  ) {
     this.fiefId = uuidv4();
-    if (name === '') {
-      this.name = 'Ny förläning';
-    } else {
-      this.name = name;
-    }
+    this.name = name ? name : 'Ny förläning';
+    this.playerId = playerId ? playerId : undefined;
     this.manorName = 'Ny förlänings gods';
     this.acres = 0;
     this.farmlandAcres = 0;

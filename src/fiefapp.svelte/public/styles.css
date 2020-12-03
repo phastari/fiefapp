@@ -130,10 +130,11 @@ table {
 
 :root {
   font-size: max(1.3vw, 12px);
+  --label-size: max(0.7vw, 8px);
   --line-height: 1.4vw;
   --small-field: 3.9vw;
-  --small-min: 45px;
-  --small-max: 60px;
+  --small-field-min: 45px;
+  --small-field-max: 60px;
   --medium-field: 7vw;
   --medium-min: 65px;
   --medium-max: 100px;

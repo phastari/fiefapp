@@ -7,5 +7,7 @@
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
   </ItemGroup>
+
+  <Nullable>enable</Nullable>
   
 </Project>

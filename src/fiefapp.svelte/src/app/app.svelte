@@ -1,5 +1,6 @@
 <script lang="ts">
   import firebase from 'firebase/app';
+import SmallTextField from '../components/small-text-field/small-text-field.svelte';
   import { fade } from 'svelte/transition';
   import Authentication from './authentication/authentication.svelte';
 
@@ -90,4 +91,8 @@
       </div>
     {/if}
   </Authentication>
+  <SmallTextField 
+    label="test"
+    value={"12"}
+  />
 </div>
