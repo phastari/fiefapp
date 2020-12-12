@@ -10,13 +10,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.mongodb", "src\fief
 		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4} = {240FD42C-92A1-40A3-ACD6-0701C54FF0E4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiefapp.graphql", "src\fiefapp.graphql\fiefapp.graphql.csproj", "{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.graphql", "src\fiefapp.graphql\fiefapp.graphql.csproj", "{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fiefapp.api", "src\fiefapp.api\fiefapp.api.csproj", "{17FBEFD1-6945-49DC-B9EB-2C0A98486058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.api", "src\fiefapp.api\fiefapp.api.csproj", "{17FBEFD1-6945-49DC-B9EB-2C0A98486058}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8A38DD2A-3951-4923-97F9-EB8E6EFC99C8} = {8A38DD2A-3951-4923-97F9-EB8E6EFC99C8}
 		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4} = {240FD42C-92A1-40A3-ACD6-0701C54FF0E4}
 		{070727D6-BB50-4C9B-BB73-6ECFA89AD9A9} = {070727D6-BB50-4C9B-BB73-6ECFA89AD9A9}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fiefapp.services", "src\fiefapp.services\fiefapp.services.csproj", "{B4213D28-28F9-4DFB-ADF5-3D857D85CF42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{240FD42C-92A1-40A3-ACD6-0701C54FF0E4} = {240FD42C-92A1-40A3-ACD6-0701C54FF0E4}
 	EndProjectSection
 EndProject
 Global
@@ -41,6 +46,10 @@ Global
 		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17FBEFD1-6945-49DC-B9EB-2C0A98486058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4213D28-28F9-4DFB-ADF5-3D857D85CF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4213D28-28F9-4DFB-ADF5-3D857D85CF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4213D28-28F9-4DFB-ADF5-3D857D85CF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4213D28-28F9-4DFB-ADF5-3D857D85CF42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

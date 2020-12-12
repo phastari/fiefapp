@@ -1,8 +1,11 @@
-﻿using fiefapp.graphql.Services.BuildingAlternative;
+﻿using fiefapp.graphql.Enums;
+using fiefapp.graphql.Services;
 using fiefapp.graphql.Types;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
+using GraphQL.Types;
+using GraphQL.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,12 +18,14 @@ namespace fiefapp.graphql
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
-            services.AddSingleton<IBuildingAlternativeSubscriptionService, BuildingAlternativeSubscriptionService>();
+            services.AddSingleton(typeof(ISubscriptionService<>), typeof(SubscriptionService<>));
 
             services.AddSingleton<RootQueries>();
             services.AddSingleton<RootMutations>();
             services.AddSingleton<RootSubscription>();
             services.AddSingleton<RootSchema>();
+
+            GraphTypeTypeRegistry.Register(typeof(MutationActionType), typeof(EnumerationGraphType<MutationAction>));
 
             services.AddGraphQL(options =>
             {

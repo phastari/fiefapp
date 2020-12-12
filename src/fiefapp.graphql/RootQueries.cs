@@ -1,15 +1,18 @@
-﻿using fiefapp.graphql.Queries;
-using fiefapp.mongodb.Repositories.BuildingAlternative;
+﻿using fiefapp.entities;
+using fiefapp.services.Interfaces;
 using GraphQL.Types;
 
 namespace fiefapp.graphql
 {
-    public class RootQueries : ObjectGraphType
+    public partial class RootQueries : ObjectGraphType
     {
-        public RootQueries(IBuildingAlternativeRepository repository)
+        public RootQueries(IRepository<Building> buildingRepository, IGamesessionRepository gamesessionRepository)
         {
-            Field<BuildingAlternativeQuery>("buildingAlternative", resolve: context => new { });
-            Field<SelectionAlternativesQuery>("selectionAlternatives", resolve: context => new { });
+            AddBuildingFields(buildingRepository);
+            AddGamesessionFields(gamesessionRepository);
         }
+
+        partial void AddBuildingFields(IRepository<Building> repository);
+        partial void AddGamesessionFields(IGamesessionRepository repository);
     }
 }

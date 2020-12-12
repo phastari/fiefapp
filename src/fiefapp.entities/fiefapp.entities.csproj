@@ -3,11 +3,5 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
-  </ItemGroup>
-
-  <Nullable>enable</Nullable>
   
 </Project>

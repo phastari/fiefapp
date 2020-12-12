@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\fiefapp.entities\fiefapp.entities.csproj" />
-    <ProjectReference Include="..\fiefapp.mongodb\fiefapp.mongodb.csproj" />
+    <ProjectReference Include="..\fiefapp.services\fiefapp.services.csproj" />
   </ItemGroup>
 
 </Project>

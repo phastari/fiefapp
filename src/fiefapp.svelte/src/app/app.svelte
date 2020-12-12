@@ -1,6 +1,5 @@
 <script lang="ts">
   import firebase from 'firebase/app';
-import SmallTextField from '../components/small-text-field/small-text-field.svelte';
   import { fade } from 'svelte/transition';
   import Authentication from './authentication/authentication.svelte';
 
@@ -18,8 +17,7 @@ import SmallTextField from '../components/small-text-field/small-text-field.svel
   const loginHandler = async (event: Event) => {
     const email = ((event.target as HTMLFormElement).elements).namedItem("email") as RadioNodeList;
     const password = ((event.target as HTMLFormElement).elements).namedItem("password") as RadioNodeList;
-    console.log('email:' + email.value);
-    console.log('password:' + password.value);
+
     try {
       error = null;
       await loginWithEmailPassword(email.value, password.value);
@@ -41,14 +39,13 @@ import SmallTextField from '../components/small-text-field/small-text-field.svel
   >
     {#if loggedIn}
       <div>
-        <div>
-          <h2>
-            {#if user}
-              {user.email}
-            {/if}
-          </h2>
-          <button type="button" on:click={logout}>Logout</button>
-        </div>
+        <h2>
+          {#if user}
+            {user.email}
+            {user.token}
+          {/if}
+        </h2>
+        <button type="button" on:click={logout}>Logout</button>
       </div>
     {:else}
       <div>
@@ -91,8 +88,4 @@ import SmallTextField from '../components/small-text-field/small-text-field.svel
       </div>
     {/if}
   </Authentication>
-  <SmallTextField 
-    label="test"
-    value={"12"}
-  />
 </div>

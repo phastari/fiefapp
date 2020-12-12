@@ -5,18 +5,19 @@
   const auth = firebase.auth();
 
   // Firebase user
-  export let user: { id: any; name: any; email: any; picture: any; }|null = null;
+  export let user: { id: any; name: any; email: any; picture: any; token: any }|null = null;
 
   // expose property on the component that we can use
   // to choose if we want use popup or redirect
   export let useRedirect = false;
 
   // small mapper function
-  const userMapper = (claims: { [x: string]: any; user_id?: any; name?: any; email?: any; picture?: any; }) => ({
+  const userMapper = (claims: { [x: string]: any; user_id?: any; name?: any; email?: any; picture?: any; token?: any }) => ({
     id: claims.user_id,
     name: claims.name,
     email: claims.email,
-    picture: claims.picture
+    picture: claims.picture,
+    token: claims.token
   });
 
   export const loginWithEmailPassword = (email: string, password: string) =>
@@ -55,6 +56,7 @@
       // on the token.claims object
       const token = await fireUser.getIdTokenResult();
       user = userMapper(token.claims);
+      user.token = token.token;
     } else {
       user = null;
     }

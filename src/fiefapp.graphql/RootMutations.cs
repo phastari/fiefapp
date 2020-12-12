@@ -1,15 +1,18 @@
-﻿using fiefapp.graphql.Mutations;
+﻿using fiefapp.entities;
+using fiefapp.graphql.Services;
 using GraphQL.Types;
 
 namespace fiefapp.graphql
 {
-    public class RootMutations : ObjectGraphType<object>
+    public partial class RootMutations : ObjectGraphType
     {
-        public RootMutations()
+        public RootMutations(ISubscriptionService<Building> buildingSubscriptionService, ISubscriptionService<Gamesession> gamesessionSubscriptionService)
         {
-            Field<BuildingAlternativeMutation>(
-                "buildingAlternative",
-                resolve: context => new { });
+            AddBuildingFields(buildingSubscriptionService);
+            AddGamesessionFields(gamesessionSubscriptionService);
         }
+
+        partial void AddBuildingFields(ISubscriptionService<Building> buildingSubscriptionService);
+        partial void AddGamesessionFields(ISubscriptionService<Gamesession> gamesessionSubscriptionService);
     }
 }

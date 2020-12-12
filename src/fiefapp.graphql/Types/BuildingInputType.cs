@@ -2,12 +2,11 @@
 
 namespace fiefapp.graphql.Types
 {
-    public class BuildingAlternativeInputType : InputObjectGraphType
+    public class BuildingInputType : InputObjectGraphType
     {
-        public BuildingAlternativeInputType()
+        public BuildingInputType()
         {
-            Name = "BuildingAlternativeInput";
-
+            Field<GuidGraphType>("id");
             Field<NonNullGraphType<StringGraphType>>("type");
             Field<NonNullGraphType<DecimalGraphType>>("upkeep");
             Field<NonNullGraphType<IntGraphType>>("stonework");

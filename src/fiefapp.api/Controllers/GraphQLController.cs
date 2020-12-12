@@ -1,6 +1,7 @@
 ﻿using fiefapp.graphql.DTOs;
 using GraphQL;
 using GraphQL.Types;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace fiefapp.api.Controllers
             _executer = executer;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQueryDTO query)
         {

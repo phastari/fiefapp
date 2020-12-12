@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using System;
+using System.Collections.Generic;
 
 namespace fiefapp.entities
 {
-    public class Livingcondition
+    public class Livingcondition : IBaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
         public int BaseCost { get; set; }
@@ -16,6 +13,6 @@ namespace fiefapp.entities
         public int FocusGain { get; set; }
         public int WellbeingGain { get; set; }
         public string Description { get; set; }
-        public List<string> IncludedInGamesessions { get; set; }
+        public List<Gamesession> Gamesessions { get; set; }
     }
 }

@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using System;
+using System.Collections.Generic;
 
 namespace fiefapp.entities
 {
-    public class BuildingAlternative
+    public class Building : IBaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Type { get; set; }
         public decimal Upkeep { get; set; }
         public int Stonework { get; set; }
@@ -17,6 +14,6 @@ namespace fiefapp.entities
         public int Stone { get; set; }
         public int Wood { get; set; }
         public int Iron { get; set; }
-        public List<string> IncludedInGamesessions { get; set; }
+        public List<Gamesession> Gamesessions { get; set; }
     }
 }
