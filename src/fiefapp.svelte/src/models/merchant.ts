@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import type { IPerson } from './person';
 
 interface IMerchant {
@@ -10,7 +8,7 @@ interface IMerchant {
 }
 
 export class Merchant implements IMerchant, IPerson {
-  readonly id: string;
+  id: string;
   cargoId?: string;
   portId?: string;
   soldiers: string[];
@@ -22,7 +20,7 @@ export class Merchant implements IMerchant, IPerson {
   skill: number;
 
   constructor() {
-    this.id = uuidv4();
+    this.id = '';
     this.cargoId = undefined;
     this.portId = undefined;
     this.soldiers = [];

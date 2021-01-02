@@ -1,21 +1,20 @@
 import { Industry } from './industry';
-import { rollObt6 } from '../../utils/dice-rolls/obt6';
 
 export enum MineType {
-  TIN = 'TIN',
-  IRON = 'IRON',
-  COPPER = 'COPPER',
-  SILVER = 'SILVER',
-  GOLD = 'GOLD',
-  GEMS = 'GEMS',
-  CUSTOM = 'CUSTOM',
+  UNDEFINED = 0,
+  TIN = 1,
+  IRON = 2,
+  COPPER = 3,
+  SILVER = 4,
+  GOLD = 5,
+  GEMS = 6,
+  CUSTOM = 7,
 }
 
 interface IMine {
   soldiers: string[];
   mineType: MineType;
   yearsLeft: number;
-  guards: number;
   baseSilverProduction: number;
   populationModifier: number;
 }
@@ -23,58 +22,19 @@ interface IMine {
 export class Mine extends Industry implements IMine {
   soldiers: string[];
   yearsLeft: number;
-  guards: number;
+  mineType: MineType;
+  baseSilverProduction: number;
+  populationModifier: number;
 
-  constructor(
-    public mineType: MineType,
-    public baseSilverProduction: number,
-    public populationModifier: number
-  ) {
+  constructor() {
     super();
-    switch (mineType) {
-      case MineType.TIN: {
-        this.name = 'Tenngruva';
-        break;
-      }
-
-      case MineType.IRON: {
-        this.name = 'Järngruva';
-        break;
-      }
-
-      case MineType.COPPER: {
-        this.name = 'Koppargruva';
-        break;
-      }
-
-      case MineType.SILVER: {
-        this.name = 'Silvergruva';
-        break;
-      }
-
-      case MineType.GOLD: {
-        this.name = 'Guldgruva';
-        break;
-      }
-
-      case MineType.GEMS: {
-        this.name = 'Ädelstensgruva';
-        break;
-      }
-
-      case MineType.CUSTOM: {
-        this.name = 'Valfrigruva';
-        break;
-      }
-    }
 
     this.needSteward = true;
     this.soldiers = [];
-    this.yearsLeft = rollObt6(1).total * rollObt6(2).total;
-    this.guards = 0;
+    this.yearsLeft = 0;
     this.silver = 0;
-    this.baseSilverProduction = baseSilverProduction;
-    this.mineType = mineType;
-    this.populationModifier = populationModifier;
+    this.baseSilverProduction = 0;
+    this.mineType = MineType.UNDEFINED;
+    this.populationModifier = 0;
   }
 }

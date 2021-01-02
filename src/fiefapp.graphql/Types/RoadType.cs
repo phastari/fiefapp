@@ -13,7 +13,7 @@ namespace fiefapp.graphql.Types
             Field(_ => _.UpgradeStoneCost);
             Field(_ => _.ModificationFactor);
             Field(_ => _.Dayswork);
-            Field(_ => _.Gamesessions, type: typeof(GamesessionType));
+            Field(_ => _.GamesessionIds, type: typeof(ListGraphType<GuidGraphType>));
         }
     }
 }

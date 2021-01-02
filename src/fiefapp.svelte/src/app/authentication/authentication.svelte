@@ -1,11 +1,12 @@
 <script lang="ts">
   import firebase from 'firebase/app';
   import 'firebase/auth';
+  import { userStore } from '../../stores/authentication';
 
   const auth = firebase.auth();
 
   // Firebase user
-  export let user: { id: any; name: any; email: any; picture: any; token: any }|null = null;
+  export let user: { id: string; name: string; email: string; picture: any; token: string } | null = null;
 
   // expose property on the component that we can use
   // to choose if we want use popup or redirect
@@ -57,8 +58,12 @@
       const token = await fireUser.getIdTokenResult();
       user = userMapper(token.claims);
       user.token = token.token;
+      localStorage.setItem('token', token.token);
+      userStore.update(u => user);
     } else {
       user = null;
+      localStorage.removeItem('token');
+      userStore.set(null);
     }
   });
 

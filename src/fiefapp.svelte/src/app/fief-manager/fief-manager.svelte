@@ -5,13 +5,13 @@
   import Subsidiaries from './subsidiaries/subsidiaries.svelte';
   import { onDestroy, onMount } from 'svelte';
   import { buildingAlternatives } from '../../stores/building-alternatives';
-  import { getBuildingAlternatives } from '../../api/get-building-alternatives';
+  import { getBuildings } from '../../api/get-building-alternatives';
   import Buildings from './buildings/buildings.svelte';
   import { client } from '../../api/apollo';
   import gql from 'graphql-tag';
 
   onMount(async () => {
-    const buildings = await getBuildingAlternatives();
+    const buildings = await getBuildings();
     buildingAlternatives.set(buildings);
   });
 
@@ -42,15 +42,14 @@
   };
   const query = gql`
     subscription {
-      buildingAlternativeAdded {
+      buildingChanged {
         type
-        upkeep
-        stonework
-        woodwork
-        smithswork
-        stone
-        wood
-        iron
+        actionSucceeded
+        deletedId
+        entity {
+          id
+          type
+        }
       }
     }
   `;

@@ -9,7 +9,7 @@ namespace fiefapp.graphql
 {
     public partial class RootQueries
     {
-        partial void AddBuildingFields(IRepository<Building> repository)
+        partial void AddBuildingFields(IBaseEntityRepository<Building> repository)
         {
             FieldAsync<ListGraphType<BuildingType>>(
                 name: "buildings", 

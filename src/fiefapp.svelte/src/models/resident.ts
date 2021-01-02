@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import type { IPerson } from './person';
 
 interface IResident {
@@ -7,7 +5,7 @@ interface IResident {
 }
 
 export class Resident implements IResident, IPerson {
-  readonly id: string;
+  id: string;
   name: string;
   age: number;
   resources: number;
@@ -16,7 +14,7 @@ export class Resident implements IResident, IPerson {
   information: string;
 
   constructor() {
-    this.id = uuidv4();
+    this.id = '';
     this.name = '';
     this.age = 0;
     this.resources = 0;

@@ -3,7 +3,7 @@
   import { Income } from '../../../models/industries/income';
   import { Tax } from '../../../models/industries/tax';
   import type { Industry } from '../../../models/industries/industry';
-  import { fiefs, index } from '../../../stores/fiefs';
+  import { fiefs, index } from '../../../stores/fiefmanager';
   import { Felling } from '../../../models/industries/felling';
   import { Mine } from '../../../models/industries/mine';
   import { Quarry } from '../../../models/industries/quarry';

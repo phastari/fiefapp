@@ -3,22 +3,19 @@ import gql from 'graphql-tag';
 import type { BuildingAlternative } from '../models/settings/building-alternative';
 import type { DocumentNode } from 'graphql';
 
-export const getBuildingAlternatives = async (): Promise<
-  BuildingAlternative[]
-> => {
+export const getBuildings = async (): Promise<BuildingAlternative[]> => {
   const query = gql`
     query {
-      buildingAlternative {
-        buildingAlternatives {
-          type
-          upkeep
-          stonework
-          woodwork
-          smithswork
-          stone
-          wood
-          iron
-        }
+      buildings {
+        id
+        type
+        upkeep
+        stonework
+        woodwork
+        smithswork
+        stone
+        wood
+        iron
       }
     }
   `;
@@ -29,20 +26,5 @@ export const getBuildingAlternatives = async (): Promise<
     throw new Error();
   }
 
-  return data.buildingAlternative.buildingAlternatives;
+  return data.buildings;
 };
-
-export const buildingAlternativesSubscription: DocumentNode = gql`
-  subscription {
-    buildingAlternativeAdded {
-      type
-      upkeep
-      stonework
-      woodwork
-      smithswork
-      stone
-      wood
-      iron
-    }
-  }
-`;

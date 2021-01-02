@@ -6,6 +6,7 @@ namespace fiefapp.graphql.Types
     {
         public RoadInputType()
         {
+            Field<NonNullGraphType<StringGraphType>>("id");
             Field<NonNullGraphType<StringGraphType>>("type");
             Field<NonNullGraphType<StringGraphType>>("name");
             Field<NonNullGraphType<IntGraphType>>("upgradeBaseCost");

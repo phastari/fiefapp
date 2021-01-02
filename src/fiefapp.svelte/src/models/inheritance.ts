@@ -1,5 +1,6 @@
 interface IInheritance {
-  type: InheritanceType;
+  id: string;
+  type: InheritanceType | undefined;
   name: string;
   description: string;
 }
@@ -12,15 +13,20 @@ export enum InheritanceType {
 }
 
 export class Inheritance implements IInheritance {
-  constructor(
-    public type: InheritanceType,
-    public name: string,
-    public description: string
-  ) {}
-}
+  id: string;
+  type: InheritanceType | undefined;
+  name: string;
+  description: string;
 
-export const emptyInheritance: Inheritance = {
-  type: InheritanceType.HEREDITARY,
-  name: '',
-  description: '',
-};
+  constructor(
+    id?: string,
+    type?: InheritanceType,
+    name?: string,
+    description?: string
+  ) {
+    this.id = id ? id : '';
+    this.type = type ? type : undefined;
+    this.name = name ? name : '';
+    this.description = description ? description : '';
+  }
+}

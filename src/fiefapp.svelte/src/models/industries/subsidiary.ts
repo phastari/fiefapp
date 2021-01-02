@@ -1,4 +1,3 @@
-import { SubsidiaryAlternative } from '../settings/subsidiary-alternative';
 import { Industry } from './industry';
 
 interface ISubsidiary {
@@ -19,56 +18,40 @@ interface ISubsidiary {
 
 export class Subsidiary extends Industry implements ISubsidiary {
   daysworkThisYear: number;
+  name: string;
+  quality: number;
+  developmentLevel: number;
+  incomeFactor: number;
+  silverPortion: number;
+  basePortion: number;
+  luxuryPortion: number;
+  daysworkBuild: number;
+  daysworkUpkeep: number;
+  springModifier: number;
+  summerModifier: number;
+  fallModifier: number;
+  winterModifier: number;
 
-  constructor(
-    name: string,
-    public quality: number,
-    public developmentLevel: number,
-    public incomeFactor: number,
-    public silverPortion: number,
-    public basePortion: number,
-    public luxuryPortion: number,
-    public daysworkBuild: number,
-    public daysworkUpkeep: number,
-    public springModifier: number,
-    public summerModifier: number,
-    public fallModifier: number,
-    public winterModifier: number
-  ) {
+  constructor() {
     super();
-    this.name = name;
-    this.quality = quality;
-    this.developmentLevel = developmentLevel;
-    this.incomeFactor = incomeFactor;
-    this.silverPortion = silverPortion;
-    this.basePortion = basePortion;
-    this.luxuryPortion = luxuryPortion;
-    this.daysworkBuild = daysworkBuild;
-    this.daysworkUpkeep = daysworkUpkeep;
-    this.springModifier = springModifier;
-    this.summerModifier = summerModifier;
-    this.fallModifier = fallModifier;
-    this.winterModifier = winterModifier;
+
+    this.name = '';
+    this.quality = 0;
+    this.developmentLevel = 0;
+    this.incomeFactor = 0;
+    this.silverPortion = 0;
+    this.basePortion = 0;
+    this.luxuryPortion = 0;
+    this.daysworkBuild = 0;
+    this.daysworkUpkeep = 0;
+    this.springModifier = 0;
+    this.summerModifier = 0;
+    this.fallModifier = 0;
+    this.winterModifier = 0;
     this.needSteward = true;
     this.daysworkThisYear = 0;
-    this.silver = silverPortion > 0 ? 1000000 : undefined;
-    this.base = basePortion > 0 ? 0 : undefined;
-    this.luxury = luxuryPortion > 0 ? 0 : undefined;
-  }
-
-  public createAlternative(): SubsidiaryAlternative {
-    return new SubsidiaryAlternative(
-      this.name,
-      this.incomeFactor,
-      this.silverPortion,
-      this.basePortion,
-      this.luxuryPortion,
-      this.daysworkBuild,
-      this.daysworkUpkeep,
-      this.springModifier,
-      this.summerModifier,
-      this.fallModifier,
-      this.winterModifier
-    );
+    this.silver = 0;
+    this.base = 0;
+    this.luxury = 0;
   }
 }

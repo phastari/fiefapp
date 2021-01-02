@@ -6,13 +6,18 @@ namespace fiefapp.graphql
 {
     public partial class RootQueries : ObjectGraphType
     {
-        public RootQueries(IRepository<Building> buildingRepository, IGamesessionRepository gamesessionRepository)
+        public RootQueries(
+            IBaseEntityRepository<Building> buildingRepository, 
+            IGamesessionRepository gamesessionRepository,
+            IStewardRepository stewardRepository,
+            IFiefRepository fiefRepository
+        )
         {
             AddBuildingFields(buildingRepository);
-            AddGamesessionFields(gamesessionRepository);
+            AddGamesessionFields(gamesessionRepository, stewardRepository, fiefRepository);
         }
 
-        partial void AddBuildingFields(IRepository<Building> repository);
-        partial void AddGamesessionFields(IGamesessionRepository repository);
+        partial void AddBuildingFields(IBaseEntityRepository<Building> repository);
+        partial void AddGamesessionFields(IGamesessionRepository repository, IStewardRepository stewardRepository, IFiefRepository fiefRepository);
     }
 }

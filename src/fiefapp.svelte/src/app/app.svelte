@@ -1,7 +1,11 @@
 <script lang="ts">
   import firebase from 'firebase/app';
   import { fade } from 'svelte/transition';
+  import Router from 'svelte-spa-router';
   import Authentication from './authentication/authentication.svelte';
+  import FiefManager from './fief-manager/fief-manager.svelte';
+  import Gamesessions from './gamesessions/gamesessions.svelte';
+  import Home from './home/home.svelte';
 
   const firebaseConfig = {
     apiKey: 'AIzaSyCz2GeGRuj1g818rSQ5aykjFe4cXH2wQCw',
@@ -25,6 +29,12 @@
       error = err;
     }
   };
+
+  const routes = {
+    '/': Home,
+    '/fiefmanager': FiefManager,
+    '/gamesessions': Gamesessions
+  }
 </script>
 
 <div>
@@ -88,4 +98,5 @@
       </div>
     {/if}
   </Authentication>
+  <Router {routes}/>
 </div>

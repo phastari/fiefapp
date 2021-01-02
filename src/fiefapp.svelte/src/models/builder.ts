@@ -1,14 +1,13 @@
-import { v4 as uuidv4 } from 'uuid';
-
+import type { Building } from './building';
 import type { IPerson } from './person';
 
 interface IBuilder {
-  buildingId?: string;
+  building?: Building;
 }
 
 export class Builder implements IBuilder, IPerson {
-  readonly id: string;
-  buildingId?: string;
+  id: string;
+  building?: Building;
   name: string;
   skill: number;
   resources: number;
@@ -16,8 +15,8 @@ export class Builder implements IBuilder, IPerson {
   age: number;
 
   constructor() {
-    this.id = uuidv4();
-    this.buildingId = undefined;
+    this.id = '';
+    this.building = undefined;
     this.name = '';
     this.skill = 0;
     this.resources = 0;

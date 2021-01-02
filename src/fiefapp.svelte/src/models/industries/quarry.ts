@@ -1,16 +1,17 @@
 import { Industry } from './industry';
 
-export enum QuarrySize {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE',
-  HUGE = 'HUGE',
+export enum QuarryType {
+  UNDEFINED = 0,
+  SMALL = 1,
+  MEDIUM = 2,
+  LARGE = 3,
+  HUGE = 4,
 }
 
 interface IQuarry {
   baseStoneProduction: number;
   soldiers: string[];
-  quarrySize: QuarrySize;
+  quarrySize: QuarryType;
   guards: number;
   populationModifier: number;
 }
@@ -20,7 +21,7 @@ export class Quarry extends Industry implements IQuarry {
   guards: number;
 
   constructor(
-    public quarrySize: QuarrySize,
+    public quarrySize: QuarryType,
     public baseStoneProduction: number,
     public populationModifier: number
   ) {
@@ -30,22 +31,22 @@ export class Quarry extends Industry implements IQuarry {
     this.baseStoneProduction = baseStoneProduction;
     this.populationModifier = populationModifier;
     switch (quarrySize) {
-      case QuarrySize.SMALL: {
+      case QuarryType.SMALL: {
         this.name = 'Litet stenbrott';
         break;
       }
 
-      case QuarrySize.MEDIUM: {
+      case QuarryType.MEDIUM: {
         this.name = 'Medelstort stenbrott';
         break;
       }
 
-      case QuarrySize.LARGE: {
+      case QuarryType.LARGE: {
         this.name = 'Stort stenbrott';
         break;
       }
 
-      case QuarrySize.HUGE: {
+      case QuarryType.HUGE: {
         this.name = 'Enormt stenbrott';
         break;
       }

@@ -1,5 +1,6 @@
 interface ILivingcondition {
-  type: LivingconditionType;
+  id: string;
+  type: LivingconditionType | undefined;
   name: string;
   baseCost: number;
   luxuryCost: number;
@@ -17,23 +18,32 @@ export enum LivingconditionType {
 }
 
 export class Livingcondition implements ILivingcondition {
-  constructor(
-    public type: LivingconditionType,
-    public name: string,
-    public baseCost: number,
-    public luxuryCost: number,
-    public focusGain: number,
-    public wellbeingGain: number,
-    public description: string
-  ) {}
-}
+  id: string;
+  type: LivingconditionType | undefined;
+  name: string;
+  baseCost: number;
+  luxuryCost: number;
+  focusGain: number;
+  wellbeingGain: number;
+  description: string;
 
-export const emptyLivingcondition: Livingcondition = {
-  type: LivingconditionType.GOOD,
-  name: '',
-  baseCost: 0,
-  luxuryCost: 0,
-  focusGain: 0,
-  wellbeingGain: 0,
-  description: '',
-};
+  constructor(
+    id?: string,
+    type?: LivingconditionType,
+    name?: string,
+    baseCost?: number,
+    luxuryCost?: number,
+    focusGain?: number,
+    wellbeingGain?: number,
+    description?: string
+  ) {
+    this.id = id ? id : '';
+    this.type = type ? type : undefined;
+    this.name = name ? name : '';
+    this.baseCost = baseCost ? baseCost : 0;
+    this.luxuryCost = luxuryCost ? luxuryCost : 0;
+    this.focusGain = focusGain ? focusGain : 0;
+    this.wellbeingGain = wellbeingGain ? wellbeingGain : 0;
+    this.description = description ? description : '';
+  }
+}

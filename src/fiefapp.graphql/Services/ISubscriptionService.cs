@@ -1,4 +1,4 @@
-﻿using fiefapp.entities;
+﻿using fiefapp.entities.Interfaces;
 using fiefapp.graphql.Models;
 using System;
 using System.Threading.Tasks;

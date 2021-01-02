@@ -1,4 +1,4 @@
-﻿using fiefapp.entities;
+﻿using fiefapp.entities.Interfaces;
 using fiefapp.graphql.Enums;
 using fiefapp.graphql.Models;
 using fiefapp.services.Interfaces;
@@ -12,9 +12,9 @@ namespace fiefapp.graphql.Services
     class SubscriptionService<T> : ISubscriptionService<T> where T : class, IBaseEntity
     {
         private readonly ISubject<MutationResponse<T>> _stream = new ReplaySubject<MutationResponse<T>>(1);
-        private readonly IRepository<T> _repository;
+        private readonly IBaseEntityRepository<T> _repository;
 
-        public SubscriptionService(IRepository<T> repository)
+        public SubscriptionService(IBaseEntityRepository<T> repository)
         {
             _repository = repository;
         }

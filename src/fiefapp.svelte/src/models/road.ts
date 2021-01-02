@@ -1,11 +1,12 @@
 interface IRoad {
-  soldierIds: string[];
+  id: string;
   name: string;
-  type: RoadType;
+  type?: RoadType;
   upgradeBaseCost: number;
   upgradeStoneCost: number;
   modificationFactor: number;
   dayswork: number;
+  soldierIds: string[];
 }
 
 export enum RoadType {
@@ -16,26 +17,31 @@ export enum RoadType {
 }
 
 export class Road implements IRoad {
+  id: string;
+  name: string;
+  type?: RoadType;
+  upgradeBaseCost: number;
+  upgradeStoneCost: number;
+  modificationFactor: number;
+  dayswork: number;
   soldierIds: string[];
 
   constructor(
-    public type: RoadType,
-    public name: string,
-    public upgradeBaseCost: number,
-    public upgradeStoneCost: number,
-    public modificationFactor: number,
-    public dayswork: number
+    id?: string,
+    type?: RoadType,
+    name?: string,
+    upgradeBaseCost?: number,
+    upgradeStoneCost?: number,
+    modificationFactor?: number,
+    dayswork?: number
   ) {
+    this.id = id ? id : '';
+    this.name = name ? name : '';
+    this.type = type ? type : undefined;
+    this.upgradeBaseCost = upgradeBaseCost ? upgradeBaseCost : 0;
+    this.upgradeStoneCost = upgradeStoneCost ? upgradeStoneCost : 0;
+    this.modificationFactor = modificationFactor ? modificationFactor : 0;
+    this.dayswork = dayswork ? dayswork : 0;
     this.soldierIds = [];
   }
 }
-
-export const emptyRoad: Road = {
-  type: RoadType.ROADS,
-  name: '',
-  upgradeBaseCost: 0,
-  upgradeStoneCost: 0,
-  modificationFactor: 0,
-  dayswork: 0,
-  soldierIds: [],
-};

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fiefapp.entities.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace fiefapp.entities
@@ -14,6 +15,16 @@ namespace fiefapp.entities
         public int Stone { get; set; }
         public int Wood { get; set; }
         public int Iron { get; set; }
-        public List<Gamesession> Gamesessions { get; set; }
+        public int Amount { get; set; }
+        public int WoodworkThisYear { get; set; }
+        public int StoneworkThisYear { get; set; }
+        public int SmithsworkThisYear { get; set; }
+        public int WoodThisYear { get; set; }
+        public int StoneThisYear { get; set; }
+        public int IronThisYear { get; set; }
+        public Guid? BuilderId { get; set; }
+        public Builder Builder { get; set; }
+        public ICollection<Guid> GamesessionIds { get; set; }
+        public ICollection<Gamesession> Gamesessions { get; set; }
     }
 }

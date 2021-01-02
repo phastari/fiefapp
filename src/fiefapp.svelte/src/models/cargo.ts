@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface ICargo {
-  cargoId: string;
+  id: string;
   silver: number;
   base: number;
   luxury: number;
@@ -13,7 +11,7 @@ interface ICargo {
 }
 
 export class Cargo implements ICargo {
-  readonly cargoId: string;
+  id: string;
   silver: number;
   base: number;
   luxury: number;
@@ -24,7 +22,7 @@ export class Cargo implements ICargo {
   otherInformation: string;
 
   constructor() {
-    this.cargoId = uuidv4();
+    this.id = '';
     this.silver = 0;
     this.base = 0;
     this.luxury = 0;

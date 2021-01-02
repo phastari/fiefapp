@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import type { IPerson } from './person';
 
 interface IEmployee {
@@ -7,18 +5,19 @@ interface IEmployee {
 }
 
 export enum EmployeeType {
-  FALCONER = 'FALCONER',
-  BAILIFF = 'BAILIFF',
-  HERALD = 'HERALD',
-  HUNTER = 'HUNTER',
-  PHYSICIAN = 'PHYSICIAN',
-  SCHOLAR = 'SCHOLAR',
-  CUPBEARER = 'CUPBEARER',
-  PROSPECTOR = 'PROSPECTOR',
+  UNDEFINED = 0,
+  FALCONER = 1,
+  BAILIFF = 2,
+  HERALD = 3,
+  HUNTER = 4,
+  PHYSICIAN = 5,
+  SCHOLAR = 6,
+  CUPBEARER = 7,
+  PROSPECTOR = 8,
 }
 
 export class Employee implements IEmployee, IPerson {
-  readonly id: string;
+  id: string;
   type: EmployeeType;
   name: string;
   skill: number;
@@ -26,9 +25,9 @@ export class Employee implements IEmployee, IPerson {
   loyalty: number;
   age: number;
 
-  constructor(type: EmployeeType) {
-    this.id = uuidv4();
-    this.type = type;
+  constructor() {
+    this.id = '';
+    this.type = EmployeeType.UNDEFINED;
     this.name = '';
     this.skill = 0;
     this.resources = 0;

@@ -1,7 +1,7 @@
-import { v4 as uuidv4 } from 'uuid';
+import type { Development } from './industries/development';
 
 interface IMarket {
-  marketId: string;
+  id: string;
   stewardId?: string;
   merchantIds: string[];
   soldierIds: string[];
@@ -14,11 +14,11 @@ interface IMarket {
   taxes: number;
   bailiffs: number;
   crime: number;
-  isBeingDeveloped: boolean;
+  development?: Development;
 }
 
 export class Market implements IMarket {
-  marketId: string;
+  id: string;
   stewardId?: string;
   merchantIds: string[];
   soldierIds: string[];
@@ -31,10 +31,10 @@ export class Market implements IMarket {
   taxes: number;
   bailiffs: number;
   crime: number;
-  isBeingDeveloped: boolean;
+  development?: Development;
 
   constructor() {
-    this.marketId = uuidv4();
+    this.id = '';
     this.stewardId = undefined;
     this.merchantIds = [];
     this.soldierIds = [];
@@ -47,6 +47,6 @@ export class Market implements IMarket {
     this.taxes = 0;
     this.bailiffs = 0;
     this.crime = 0;
-    this.isBeingDeveloped = false;
+    this.development = undefined;
   }
 }

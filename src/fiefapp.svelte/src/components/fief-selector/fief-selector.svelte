@@ -1,13 +1,18 @@
 <script lang="ts">
   import type { Fief } from '../../models/fief';
-  import { index, fiefs } from '../../stores/fiefs';
+  import { fiefs, index} from '../../stores/fiefmanager';
 
   let selected: Fief;
   $: selected = $fiefs[$index];
 
   function changeSelection() {
     let newIndex = $fiefs.indexOf(selected);
-    index.set(newIndex);
+    // fiefStore.update(() => {
+    //   let store = $fiefStore;
+    //   store.index = newIndex;
+    //   return store;
+    // });
+    index.update(_ => $fiefs.indexOf(selected))
   }
 </script>
 

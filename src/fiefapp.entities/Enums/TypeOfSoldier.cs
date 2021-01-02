@@ -1,0 +1,37 @@
+﻿namespace fiefapp.entities.Enums
+{
+    public enum TypeOfSoldier
+    {
+        UNDEFINED,
+        ARMY_CROSSBOWMEN,
+        ARMY_BOWMEN,
+        ARMY_MEDICS,
+        ARMY_MEDICS_SKILLED,
+        ARMY_INFANTRY,
+        ARMY_INFANTRY_MEDIUM,
+        ARMY_INFANTRY_HEAVY,
+        ARMY_INFANTRY_ELITE,
+        ARMY_LONGBOWMEN,
+        ARMY_MERCENARIES,
+        ARMY_MERCENARIES_ELITE,
+        ARMY_MERCENARIES_BOWMEN,
+        ARMY_ENGINEERS,
+        ARMY_SPEARMEN,
+        ARMY_SCOUTS,
+        ARMY_SCOUTS_SKILLED,
+        ARMY_KNIGHT_TEMPLARS,
+        ARMY_GUARDS,
+        ARMY_WEAPONMASTERS,
+        CAVALRY_BOWMEN,
+        CAVALRY_COURIER,
+        CAVALRY_LIGHT,
+        CAVALRY_KNIGHTS,
+        CAVALRY_SCOUTS,
+        CAVALRY_KNIGHT_TEMPLARS,
+        CAVALRY_HEAVY,
+        CAVALRY_ELITE,
+        OFFICER_CORPORAL,
+        OFFICER_SERGEANT,
+        OFFICER_CAPTAIN,
+    }
+}

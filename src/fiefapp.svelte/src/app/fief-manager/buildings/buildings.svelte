@@ -1,7 +1,7 @@
 <script lang="ts">
   import BuildingComponent from './components/building-component.svelte';
   import type { Building } from '../../../models/building';
-  import { fiefs, index } from '../../../stores/fiefs';
+  import { fiefs, index } from '../../../stores/fiefmanager';
 
   let buildings: Building[];
   $: buildings = $fiefs[$index].buildings

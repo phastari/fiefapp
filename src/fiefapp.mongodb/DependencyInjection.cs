@@ -15,9 +15,16 @@ namespace fiefapp.mongodb
             configuration.GetSection(nameof(DatabaseSettings)).Bind(settings);
 
             services.AddSingleton<IDatabaseSettings>(settings);
-            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddTransient(typeof(IBaseEntityRepository<>), typeof(BaseEntityRepository<>));
+            services.AddTransient(typeof(IAlternativesRepository<>), typeof(AlternativesRepository<>));
+            services.AddTransient(typeof(IFiefForeinKeyRepository<>), typeof(FiefForeinKeyRepository<>));
 
             services.AddTransient<IGamesessionRepository, GamesessionRepository>();
+            services.AddTransient<IFiefRepository, FiefRepository>();
+            services.AddTransient<IGamesessionRepository, GamesessionRepository>();
+            services.AddTransient<IIndustryRepository, IndustryRepository>();
+            services.AddTransient<IStewardRepository, StewardRepository>();
 
             return services;
         }

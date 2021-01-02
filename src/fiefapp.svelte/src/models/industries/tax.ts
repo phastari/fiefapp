@@ -1,10 +1,11 @@
 import { Industry } from './industry';
 
 export enum TaxType {
-  AVERCORN = 'AVERCORN',
-  TAX = 'TAX',
-  LICENCE_FEE = 'LICENCE_FEE',
-  TOLL = 'TOLL',
+  UNDEFINED = 0,
+  AVERCORN = 1,
+  TAX = 2,
+  LICENSE = 3,
+  TOLL = 4,
 }
 
 interface ITax {
@@ -14,38 +15,13 @@ interface ITax {
 
 export class Tax extends Industry implements ITax {
   showInIncomes: boolean;
+  taxType: TaxType;
 
-  constructor(public taxType: TaxType) {
+  constructor() {
     super();
+
     this.needSteward = false;
-    this.taxType = taxType;
-
-    switch (taxType) {
-      case TaxType.AVERCORN: {
-        this.name = 'Avrad';
-        this.base = 0;
-        break;
-      }
-
-      case TaxType.LICENCE_FEE: {
-        this.name = 'Licensavgifter';
-        this.silver = 0;
-        break;
-      }
-
-      case TaxType.TAX: {
-        this.name = 'Skatter';
-        this.silver = 0;
-        break;
-      }
-
-      case TaxType.TOLL: {
-        this.name = 'Tullar';
-        this.silver = 0;
-        break;
-      }
-    }
-
+    this.taxType = TaxType.UNDEFINED;
     this.showInIncomes = true;
   }
 }

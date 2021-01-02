@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface IIndustry {
-  industryId: string;
+  id: string;
   name: string;
   stewardId?: string;
   needSteward: boolean;
@@ -14,7 +12,7 @@ interface IIndustry {
 }
 
 export class Industry implements IIndustry {
-  readonly industryId: string;
+  id: string;
   name: string;
   stewardId?: string;
   needSteward: boolean;
@@ -26,7 +24,7 @@ export class Industry implements IIndustry {
   iron?: number;
 
   constructor() {
-    this.industryId = uuidv4();
+    this.id = '';
     this.name = '';
     this.stewardId = undefined;
     this.needSteward = false;
@@ -40,6 +38,6 @@ export class Industry implements IIndustry {
 }
 
 export interface IShortIndustry {
-  industryId: string;
+  id: string;
   name: string;
 }

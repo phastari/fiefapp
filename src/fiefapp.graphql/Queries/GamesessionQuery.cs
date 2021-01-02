@@ -1,32 +1,57 @@
-﻿using fiefapp.graphql.Types;
+﻿using fiefapp.graphql.Models;
+using fiefapp.graphql.Types;
+using fiefapp.graphql.Types.Response;
 using fiefapp.services.Interfaces;
 using GraphQL;
 using GraphQL.Types;
+using System;
 
 namespace fiefapp.graphql
 {
     public partial class RootQueries
     {
-        partial void AddGamesessionFields(IGamesessionRepository repository)
+        partial void AddGamesessionFields(
+            IGamesessionRepository gamesessionRepository,
+            IStewardRepository stewardRepository,
+            IFiefRepository fiefRepository
+        )
         {
-            FieldAsync<ListGraphType<GamesessionType>>(
-                name: "gamesessionsAsPlayer",
+            FieldAsync<GamesessionQueryResponseType>(
+                name: "gamesession",
                 arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<GuidGraphType>>
+                    {
+                        Name = "gamesessionId"
+                    },
                     new QueryArgument<StringGraphType>
                     {
-                        Name = "id"
+                        Name = "userId"
                     }
                 ),
                 resolve: async context =>
                 {
-                    var id = context.GetArgument<string>("id");
+                    var gamesessionId = context.GetArgument<Guid>("gamesessionId");
+                    var userId = context.GetArgument<string>("userId");
 
-                    return await repository.GetGamesessionsAsPlayerAsync(id);
+                    return new GamesessionQueryResponse
+                    {
+                        Gamesession = await gamesessionRepository.GetGamesessionAsync(
+                            gamesessionId
+                        ),
+                        Stewards = await stewardRepository.GetStewardsForGamesessionAndUser(
+                            gamesessionId,
+                            userId
+                        ),
+                        Fiefs = await fiefRepository.GetFiefsForGamesessionAndUser(
+                            gamesessionId,
+                            userId
+                        )
+                    };
                 }
             );
 
             FieldAsync<ListGraphType<GamesessionType>>(
-                name: "gamesessionsAsGamemaster",
+                name: "gamesessions",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType>
                     {
@@ -35,25 +60,9 @@ namespace fiefapp.graphql
                 ),
                 resolve: async context =>
                 {
-                    var id = context.GetArgument<string>("id");
-
-                    return await repository.GetGamesessionsAsGamemasterAsync(id);
-                }
-            );
-
-            FieldAsync<ListGraphType<GamesessionType>>(
-                name: "gamesessionInvitations",
-                arguments: new QueryArguments(
-                    new QueryArgument<StringGraphType>
-                    {
-                        Name = "id"
-                    }
-                ),
-                resolve: async context =>
-                {
-                    var id = context.GetArgument<string>("id");
-
-                    return await repository.GetGamesessionInvitationsAsync(id);
+                    return await gamesessionRepository.GetGamesessionsAsync(
+                        context.GetArgument<string>("id")
+                    );
                 }
             );
         }

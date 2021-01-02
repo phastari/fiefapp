@@ -1,15 +1,16 @@
 import { Industry } from './industry';
 
 interface IDevelopment {
-  beingDevelopedId: string;
+  beingDeveloped: Industry | undefined;
 }
 
 export class Development extends Industry implements IDevelopment {
-  constructor(public beingDevelopedId: string, name: string) {
+  beingDeveloped: Industry | undefined;
+
+  constructor() {
     super();
 
-    this.beingDevelopedId = beingDevelopedId;
-    this.name = 'Utveckla ' + name;
+    this.name = '';
     this.needSteward = true;
   }
 }

@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface IBoat {
-  boatId: string;
+  id: string;
   boatbuilderId?: string;
   cargoId?: string;
   shipyardId?: string;
@@ -25,7 +23,7 @@ interface IBoat {
   buildTimeInDays: number;
   buildTimeInDaysAll: number;
   status: string;
-  backIn: number;
+  backInDays: number;
   type: BoatType;
   displayName: string;
   masts: number;
@@ -43,7 +41,7 @@ interface IBoat {
 }
 
 export class Boat implements IBoat {
-  readonly boatId: string;
+  id: string;
   boatbuilderId?: string;
   cargoId?: string;
   shipyardId?: string;
@@ -67,7 +65,7 @@ export class Boat implements IBoat {
   buildTimeInDays: number;
   buildTimeInDaysAll: number;
   status: string;
-  backIn: number;
+  backInDays: number;
   type: BoatType;
   displayName: string;
   masts: number;
@@ -84,7 +82,7 @@ export class Boat implements IBoat {
   imgSource: string;
 
   constructor(boatType: BoatType, shipyardId?: string) {
-    this.boatId = uuidv4();
+    this.id = '';
     this.boatbuilderId = undefined;
     this.cargoId = undefined;
     this.shipyardId = shipyardId;
@@ -108,7 +106,7 @@ export class Boat implements IBoat {
     this.buildTimeInDays = 0;
     this.buildTimeInDaysAll = 0;
     this.status = '';
-    this.backIn = 0;
+    this.backInDays = 0;
     this.type = boatType;
     this.displayName = '';
     this.masts = 0;
@@ -127,5 +125,6 @@ export class Boat implements IBoat {
 }
 
 export enum BoatType {
-  FISHING_BOAT = 'FISHING_BOAT',
+  UNDEFINED = 0,
+  FISHING_BOAT = 1,
 }

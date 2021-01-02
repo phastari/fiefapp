@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface IVillage {
-  villageId: string;
+  id: string;
   name: string;
   serfdoms: number;
   farmers: number;
@@ -16,7 +14,7 @@ interface IVillage {
 }
 
 export class Village implements IVillage {
-  readonly villageId: string;
+  id: string;
   name: string;
   serfdoms: number;
   farmers: number;
@@ -30,7 +28,7 @@ export class Village implements IVillage {
   innkeepers: number;
 
   constructor() {
-    this.villageId = uuidv4();
+    this.id = '';
     this.name = 'Ny by';
     this.serfdoms = 0;
     this.farmers = 0;

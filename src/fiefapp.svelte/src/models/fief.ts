@@ -1,11 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
-
-import { Market } from './market';
-import { emptyLivingcondition, Livingcondition } from './livingcondition';
 import type { Port } from './port';
-import { emptyRoad, Road } from './road';
-import { emptyInheritance, Inheritance } from './inheritance';
-import { Village } from './village';
 import type { Building } from './building';
 import type { Boat } from './boat';
 import type { Resident } from './resident';
@@ -13,10 +6,14 @@ import type { Soldier } from './soldier';
 import type { Employee } from './employee';
 import type { Builder } from './builder';
 import type { Industry } from './industries/industry';
-import { getDefaultIndustries } from '../static/default-industries';
+import { Village } from './village';
+import { Inheritance } from './inheritance';
+import { Road } from './road';
+import { Livingcondition } from './livingcondition';
+import { Market } from './market';
 
 interface IFief {
-  fiefId: string;
+  id: string;
   gamesessionId: string;
   playerId: string | undefined;
   name: string;
@@ -63,12 +60,13 @@ export interface IFiefs {
 }
 
 export interface IShortFief {
-  fiefId: string;
+  id: string;
   name: string;
 }
 
 export class Fief implements IFief {
-  readonly fiefId: string;
+  id: string;
+  gamesessionId: string;
   playerId: string | undefined;
   name: string;
   manorName: string;
@@ -108,12 +106,9 @@ export class Fief implements IFief {
   employees: Employee[];
   builders: Builder[];
 
-  constructor(
-    public readonly gamesessionId: string,
-    name?: string,
-    playerId?: string
-  ) {
-    this.fiefId = uuidv4();
+  constructor(name?: string, playerId?: string, gamesessionId?: string) {
+    this.id = '';
+    this.gamesessionId = gamesessionId ? gamesessionId : '';
     this.name = name ? name : 'Ny förläning';
     this.playerId = playerId ? playerId : undefined;
     this.manorName = 'Ny förlänings gods';
@@ -141,11 +136,11 @@ export class Fief implements IFief {
     this.market = new Market();
     this.stewardId = undefined;
     this.port = undefined;
-    this.livingcondition = emptyLivingcondition;
-    this.road = emptyRoad;
-    this.inheritance = emptyInheritance;
+    this.livingcondition = new Livingcondition();
+    this.road = new Road();
+    this.inheritance = new Inheritance();
     this.villages = [new Village()];
-    this.industries = getDefaultIndustries(this.fiefId, this.market.marketId);
+    this.industries = [];
     this.buildings = [];
     this.boats = [];
     this.residents = [];

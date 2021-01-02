@@ -1,5 +1,5 @@
 <script lang="ts">
-
+  import { push } from 'svelte-spa-router';
 </script>
 
 <style></style>
@@ -23,3 +23,4 @@ högste har mycket att
 <br />
 säga till om i länet.
 </p>
+<button on:click={() => push('/gamesessions')}>Go somewhere</button>

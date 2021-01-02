@@ -1,26 +1,39 @@
-import { v4 as uuidv4 } from 'uuid';
+import type { Inheritance } from './inheritance';
+import type { Livingcondition } from './livingcondition';
+import type { Road } from './road';
 
 interface IGamesession {
-  gamesessionId: string;
+  id: string;
   ownerId: string;
   userIds: string[];
-  gamemasterId: string | undefined;
+  gamemasterId: string;
   playerIds: string[];
   name: string;
+  inheritances: Inheritance[];
+  roads: Road[];
+  livingconditions: Livingcondition[];
 }
 
 export class Gamesession implements IGamesession {
-  readonly gamesessionId: string;
+  id: string;
+  ownerId: string;
   userIds: string[];
-  gamemasterId: string | undefined;
+  gamemasterId: string;
   playerIds: string[];
   name: string;
+  inheritances: Inheritance[];
+  roads: Road[];
+  livingconditions: Livingcondition[];
 
-  constructor(public ownerId: string) {
-    this.gamesessionId = uuidv4();
-    this.userIds = [ownerId];
-    this.gamemasterId = undefined;
+  constructor() {
+    this.id = '';
+    this.ownerId = '';
+    this.userIds = [];
+    this.gamemasterId = '';
     this.playerIds = [];
-    this.name = 'Ny spelsession';
+    this.name = '';
+    this.inheritances = [];
+    this.roads = [];
+    this.livingconditions = [];
   }
 }

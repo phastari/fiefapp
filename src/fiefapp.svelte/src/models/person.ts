@@ -1,5 +1,5 @@
 export interface IPerson {
-  readonly id: string;
+  id: string;
   name: string;
   age: number;
   resources: number;

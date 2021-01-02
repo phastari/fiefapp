@@ -11,7 +11,7 @@ namespace fiefapp.graphql.Types
             Field(_ => _.Type);
             Field(_ => _.Name);
             Field(_ => _.Description);
-            Field(_ => _.Gamesessions, type: typeof(GamesessionType));
+            Field(_ => _.GamesessionIds, type: typeof(ListGraphType<GuidGraphType>));
         }
     }
 }

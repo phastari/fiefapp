@@ -1,12 +1,12 @@
-import { v4 as uuidv4 } from 'uuid';
+import type { Development } from './industries/development';
 
 interface IShipyard {
-  shipyardId: string;
+  id: string;
   stewardId?: string;
   boatbuilderIds: string[];
   boatIds: string[];
   name: string;
-  isBeingDeveloped: boolean;
+  development?: Development;
   incomeSilver: number;
   smallDocks: number;
   mediumDocks: number;
@@ -15,12 +15,12 @@ interface IShipyard {
 }
 
 export class Shipyard implements IShipyard {
-  readonly shipyardId: string;
+  id: string;
   stewardId?: string;
   boatbuilderIds: string[];
   boatIds: string[];
   name: string;
-  isBeingDeveloped: boolean;
+  development?: Development;
   incomeSilver: number;
   smallDocks: number;
   mediumDocks: number;
@@ -28,12 +28,12 @@ export class Shipyard implements IShipyard {
   populationModifier: number;
 
   constructor() {
-    this.shipyardId = uuidv4();
+    this.id = '';
     this.stewardId = undefined;
     this.boatbuilderIds = [];
     this.boatIds = [];
     this.name = '';
-    this.isBeingDeveloped = false;
+    this.development = undefined;
     this.incomeSilver = 0;
     this.smallDocks = 0;
     this.mediumDocks = 0;

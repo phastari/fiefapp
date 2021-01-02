@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 interface IPort {
-  portId: string;
+  id: string;
   stewardId?: string;
   shipyardId?: string;
   boatIds: string[];
@@ -18,7 +16,7 @@ interface IPort {
 }
 
 export class Port implements IPort {
-  readonly portId: string;
+  id: string;
   stewardId?: string;
   shipyard?: string;
   boatIds: string[];
@@ -34,7 +32,7 @@ export class Port implements IPort {
   isBeingDeveloped: boolean;
 
   constructor() {
-    this.portId = uuidv4();
+    this.id = '';
     this.stewardId = undefined;
     this.shipyard = undefined;
     this.boatIds = [];

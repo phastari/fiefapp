@@ -1,26 +1,25 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import type { IPerson } from './person';
+import type { Shipyard } from './shipyard';
 
 interface IBoatbuilder {
-  boatId?: string;
-  shipyardId: string;
+  id?: string;
+  shipyard?: Shipyard;
 }
 
 export class Boatbuilder implements IBoatbuilder, IPerson {
-  readonly id: string;
+  id: string;
   boatId?: string;
-  shipyardId: string;
+  shipyard?: Shipyard;
   name: string;
   resources: number;
   skill: number;
   loyalty: number;
   age: number;
 
-  constructor(shipyardId: string) {
-    this.id = uuidv4();
+  constructor() {
+    this.id = '';
     this.boatId = undefined;
-    this.shipyardId = shipyardId;
+    this.shipyard = undefined;
     this.name = '';
     this.resources = 0;
     this.skill = 0;

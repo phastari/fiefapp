@@ -8,7 +8,18 @@ import type { OperationDefinitionNode } from 'graphql';
 
 const headers = { 'content-type': 'application/json' };
 const getHeaders = () => {
-  return headers;
+  let token = localStorage.getItem('token');
+
+  if (!token) {
+    return headers;
+  }
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
 };
 
 const wsLink = new WebSocketLink({

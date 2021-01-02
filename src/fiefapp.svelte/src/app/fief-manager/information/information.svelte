@@ -1,8 +1,8 @@
 <script lang="ts">
   import FiefSelector from '../../../components/fief-selector/fief-selector.svelte';
-  import { fiefs, index } from '../../../stores/fiefs';
+  import { fiefs, index } from '../../../stores/fiefmanager';
   import type { Fief } from '../../../models/fief';
-  import { selectionAlternatives } from '../../../stores/selection-alternatives';
+  import fiefStore from '../../../stores/fiefmanager';
 
   let fief: Fief;
   $: fief = $fiefs[$index];
@@ -29,7 +29,7 @@
     <div class="row">
       <span>Arvstyp</span>
       <select class="large-field" bind:value={fief.inheritance} >
-        {#each $selectionAlternatives.inheritances as inheritance}
+        {#each $gamesessionsStore.inheritances as inheritance}
           <option>{inheritance.name}</option>
         {/each}
       </select>
